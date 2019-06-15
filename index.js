@@ -9,14 +9,15 @@ axios.get("https://www.wsj.com/").then(response => {
   $("script").remove();
   $("styles").remove();
 
+  const texts = [];
   var t = $("html *")
     .contents()
     .map(function() {
-      return this.type === "text" ? $(this).text() + " " : "";
-    })
-    .get()
-    .join("");
+      if (this.type === "text") {
+        texts.push($(this).text());
+      }
+    });
 
-  console.log(t);
-  console.log(t);
+  console.log(texts);
+  console.log(texts);
 });
