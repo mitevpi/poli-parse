@@ -1,26 +1,88 @@
 {
-  "name": "@nbbj/poli-parse",
+  "name": "poli-parse",
   "version": "1.0.0",
   "description": "Political news scraping/parsing library.",
   "main": "index.js",
+  "author": {
+    "name": "Petr Mitev",
+    "email": "p.mitevpi@gmail.com",
+    "url": "https://mitevpi.com/"
+  },
+  "keywords": [
+    "political"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "samples"
+  ],
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "coverage": "npm test -- --coverage",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "lint": "eslint . --fix",
+    "flow": "flow check",
+    "docs": "documentation build src/index.js -f md -o docs/README.md && documentation build src/** -f html -o docs",
+    "postdocs": "",
+    "clean": "rimraf dist",
+    "flowbuild": "flow-copy-source src dist",
+    "prebuild": "npm run clean && npm run flowbuild",
+    "build": "babel src -d dist",
+    "preversion": "npm run lint && npm run build",
+    "version": "standard-changelog && git add CHANGELOG.md",
+    "postpublish": "git push origin master --follow-tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mitevpi/poli-parse.git"
   },
-  "author": "Petr Mitev",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mitevpi/poli-parse/issues"
   },
   "homepage": "https://github.com/mitevpi/poli-parse#readme",
   "dependencies": {
-    "axios": "^0.19.0",
-    "cheerio": "^1.0.0-rc.3"
+    "axios": "0.19.0",
+    "cheerio": "1.0.0-rc.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "devDependencies": {
-    "eslint": "^5.16.0"
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "documentation": "^11.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-flowtype": "^3.10.3",
+    "eslint-plugin-flowtype-errors": "^4.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "flow-bin": "^0.101.0",
+    "flow-copy-source": "^2.0.6",
+    "husky": "^2.4.1",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.2.1",
+    "opn-cli": "^5.0.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "standard-changelog": "^2.0.11"
   }
 }
