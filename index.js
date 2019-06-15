@@ -18,6 +18,5 @@ axios.get("https://www.wsj.com/").then(response => {
       }
     });
 
-  console.log(texts);
-  console.log(texts);
+  return texts;
 });
