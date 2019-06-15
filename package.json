@@ -1,0 +1,26 @@
+{
+  "name": "@nbbj/poli-parse",
+  "version": "1.0.0",
+  "description": "Political news scraping/parsing library.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitevpi/poli-parse.git"
+  },
+  "author": "Petr Mitev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mitevpi/poli-parse/issues"
+  },
+  "homepage": "https://github.com/mitevpi/poli-parse#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
