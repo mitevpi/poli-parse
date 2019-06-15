@@ -12,13 +12,13 @@ Weather-related data for analysis.
 
 ### AllText
 
-Get a ll text from a URL's primary render HTML.
+Get all text from a URL's primary render HTML.
 
 #### Parameters
 
 -   `url` **[String][4]** Web url to scrape for text.
 
-Returns **[Object][5]** An array of arrays containing sentences scraped.
+Returns **[Promise][5]&lt;[Array][6]&lt;[Array][6]>>** An array of arrays containing text of sentences scraped.
 
 [1]: #scrape
 
@@ -28,4 +28,6 @@ Returns **[Object][5]** An array of arrays containing sentences scraped.
 
 [4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array

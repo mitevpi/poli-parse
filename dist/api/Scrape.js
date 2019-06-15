@@ -36,21 +36,25 @@ class Scrape {
   /**
    * Get a ll text from a URL's primary render HTML.
    * @param {String} url Web url to scrape for text.
-   * @returns {Object} An array of arrays containing sentences scraped.
+   * @returns {Promise<Array<Array>>} An array of arrays containing sentences scraped.
    */
   static AllText(url) {
-    axios.get(url).then(response => {
-      // Load the web page source code into a cheerio instance
-      const $ = cheerio.load(response.data);
-      $("script").remove();
-      $("styles").remove();
-      const texts = [];
-      let t = $("html *").contents().map(() => {
-        if (this.type === "text") {
-          texts.push($(this).text());
-        }
+    return new Promise((resolve, reject) => {
+      axios.get(url).then(response => {
+        // Load the web page source code into a cheerio instance
+        const $ = cheerio.load(response.data);
+        $("script").remove();
+        $("styles").remove();
+        const texts = [];
+        $("html *").contents().map(function () {
+          if (this.type === "text") {
+            texts.push($(this).text());
+          }
+        }).then(resolve(texts));
+      }).catch(err => {
+        console.error(err);
+        reject(err);
       });
-      return texts;
     });
   }
 

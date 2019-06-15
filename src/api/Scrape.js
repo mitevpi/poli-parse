@@ -27,27 +27,34 @@ const axios = require("axios");
 
 export class Scrape {
   /**
-   * Get a ll text from a URL's primary render HTML.
+   * Get all text from a URL's primary render HTML.
    * @param {String} url Web url to scrape for text.
-   * @returns {Object} An array of arrays containing sentences scraped.
+   * @returns {Promise<Array<Array>>} An array of arrays containing text of sentences scraped.
    */
   static AllText(url) {
-    axios.get(url).then(response => {
-      // Load the web page source code into a cheerio instance
-      const $ = cheerio.load(response.data);
-      $("script").remove();
-      $("styles").remove();
+    return new Promise((resolve, reject) => {
+      axios
+        .get(url)
+        .then(response => {
+          // Load the web page source code into a cheerio instance
+          const $ = cheerio.load(response.data);
+          $("script").remove();
+          $("styles").remove();
 
-      const texts = [];
-      $("html *")
-        .contents()
-        .map(() => {
-          if (this.type === "text") {
-            texts.push($(this).text());
-          }
+          const texts = [];
+          $("html *")
+            .contents()
+            .map(function GetText() {
+              if (this.type === "text") {
+                texts.push($(this).text());
+              }
+            })
+            .then(resolve(texts));
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
         });
-
-      return texts;
     });
   }
 }
