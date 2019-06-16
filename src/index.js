@@ -11,3 +11,8 @@ export { Parse } from "./api/Parse";
  * @property {Scrape}
  */
 export { Scrape } from "./api/Scrape";
+/**
+ * Get sentiment data from text.
+ * @property {Sentiment}
+ */
+export { Sentiment } from "./api/Sentiment";

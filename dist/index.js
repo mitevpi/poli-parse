@@ -15,7 +15,15 @@ Object.defineProperty(exports, "Scrape", {
     return _Scrape.Scrape;
   }
 });
+Object.defineProperty(exports, "Sentiment", {
+  enumerable: true,
+  get: function get() {
+    return _Sentiment.Sentiment;
+  }
+});
 
 var _Parse = require("./api/Parse");
 
 var _Scrape = require("./api/Scrape");
+
+var _Sentiment = require("./api/Sentiment");

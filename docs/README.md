@@ -10,10 +10,13 @@
 -   [Scrape][6]
     -   [AllText][7]
         -   [Parameters][8]
+-   [Sentiment][9]
+    -   [Compute][10]
+        -   [Parameters][11]
 
 ## Parse
 
-Parasing the scraped text.
+Parsing the scraped front page text.
 
 ### FilterLength
 
@@ -21,10 +24,10 @@ Filter out text from a URL's primary render HTML that isn't longer than X words 
 
 #### Parameters
 
--   `texts` **[Array][9]** Array containing the text of sentences scraped.
--   `length` **[Number][10]** The minimum word count to filter sentences against.
+-   `texts` **[Array][12]** Array containing the text of sentences scraped.
+-   `length` **[Number][13]** The minimum word count to filter sentences against.
 
-Returns **[Promise][11]&lt;[Array][9]>** The filtered array of texts, containing only sentences longer
+Returns **[Promise][14]&lt;[Array][12]>** The filtered array of texts, containing only sentences longer
 than X words.
 
 ### FilterSubject
@@ -33,15 +36,16 @@ Filter text from a URL's primary render HTML that mentions any of the subject ke
 
 #### Parameters
 
--   `texts` **[Array][9]** Array containing the text of sentences scraped.
--   `keywords` **[Array][9]&lt;[String][12]>** Array of strings to search for in the texts.
+-   `texts` **[Array][12]** Array containing the text of sentences scraped.
+-   `keywords` **[Array][12]&lt;[String][15]>** Array of strings to search for in the texts.
 
-Returns **[Array][9]** The filtered array of texts, containing only sentences mentioning
+Returns **[Array][12]** The filtered array of texts, containing only sentences mentioning
 the keywords input by the user.
 
 ## Scrape
 
-Scraping the raw data from news outlet front page HTML.
+Scraping raw text data from news outlet
+front page HTML (headlines, major stories).
 
 ### AllText
 
@@ -49,9 +53,23 @@ Get all text from a URL's primary render HTML.
 
 #### Parameters
 
--   `url` **[String][12]** Web url to scrape for text.
+-   `url` **[String][15]** Web url to scrape for text.
 
-Returns **[Promise][11]&lt;[Array][9]>** Promise of an array containing the text of sentences scraped.
+Returns **[Promise][14]&lt;[Array][12]>** Promise of an array containing the text of sentences scraped.
+
+## Sentiment
+
+Get sentiment data from text.
+
+### Compute
+
+Compute sentiment score from a sentence.
+
+#### Parameters
+
+-   `text` **[String][15]** The sentence to analyze for sentiment.
+
+Returns **[Object][16]** Sentiment data.
 
 [1]: #parse
 
@@ -69,10 +87,18 @@ Returns **[Promise][11]&lt;[Array][9]>** Promise of an array containing the text
 
 [8]: #parameters-2
 
-[9]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[9]: #sentiment
 
-[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[10]: #compute
 
-[11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[11]: #parameters-3
 
-[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+
+[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object

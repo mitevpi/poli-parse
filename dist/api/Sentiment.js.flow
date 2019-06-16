@@ -22,30 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-export class Parse {
-  /**
-   * Filter out text from a URL's primary render HTML that isn't longer than X words (sentence).
-   * @param {Array} texts Array containing the text of sentences scraped.
-   * @param {Number} length The minimum word count to filter sentences against.
-   * @returns {Promise<Array>} The filtered array of texts, containing only sentences longer
-   * than X words.
-   */
-  static FilterLength(texts, length) {
-    return texts.filter(sentence => sentence.split(" ").length > length);
-  }
+import SentimentModule from "sentiment";
 
+// var Sentiment = require("sentiment");
+const sentiment = new SentimentModule();
+
+export class Sentiment {
   /**
-   * Filter text from a URL's primary render HTML that mentions any of the subject keywords.
-   * @param {Array} texts Array containing the text of sentences scraped.
-   * @param {Array<String>} keywords Array of strings to search for in the texts.
-   * @returns {Array} The filtered array of texts, containing only sentences mentioning
-   * the keywords input by the user.
+   * Compute sentiment score from a sentence.
+   * @param {String} text The sentence to analyze for sentiment.
+   * @returns {Object} Sentiment data.
    */
-  static FilterSubject(texts, keywords) {
-    const checker = value =>
-      keywords.some(element =>
-        value.toLowerCase().includes(element.toLowerCase())
-      );
-    return texts.filter(checker);
+  static Compute(text) {
+    const result = sentiment.analyze(text);
+    console.log(result);
+    return result;
   }
 }

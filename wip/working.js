@@ -1,13 +1,10 @@
 const PoliParse = require("../dist/index");
 
 PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
-  const filtered = PoliParse.Parse.FilterLength(data, 2);
-  const subject = PoliParse.Parse.FilterSubject(filtered, [
-    "Martin",
-    "Feldstein"
-  ]);
-  console.log(subject);
-  console.log(subject);
+  let newData = PoliParse.Parse.FilterLength(data, 2);
+  newData = PoliParse.Parse.FilterSubject(newData, ["Martin", "Feldstein"]);
+  console.log(newData);
+  console.log(newData);
 });
 
 // const data = await PoliParse.Scrape.AllText("https://www.wsj.com/");
