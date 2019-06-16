@@ -63,4 +63,22 @@ export class Scrape {
         });
     });
   }
+
+  static AllText2(url) {
+    return new Promise((resolve, reject) => {
+      axios
+        .get(url)
+        .then(response => {
+          const regex = />(\w+(.*))</g;
+          const found = response.data.match(regex);
+          console.log(found);
+
+          resolve(response);
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
+    });
+  }
 }
