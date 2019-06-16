@@ -33,15 +33,29 @@ export class Sentiment {
    * @returns {Promise<Object>} Sentiment data.
    */
   static Compute(text) {
+    function Round(x) {
+      return +Number.parseFloat(x).toPrecision(4);
+    }
     return new Promise((resolve, reject) => {
       const result = sentiment.analyze(text);
-      result.scoreRelative = result.score / 5;
-      result.parsed = result.words.length / result.tokens.length;
-      result.negativeParsed = result.negative.length / result.words.length || 0;
-      result.positiveParsed = result.positive.length / result.words.length || 0;
+      result.scoreRelative = Round(result.score / 5);
+      result.parsed = Round(result.words.length / result.tokens.length);
+      result.negativeOfParsed = Round(
+        result.negative.length / result.words.length || 0
+      );
+      result.positiveOfParsed = Round(
+        result.positive.length / result.words.length || 0
+      );
 
-      result.negativeTotal = result.negative.length / result.tokens.length;
-      result.positiveTotal = result.positive.length / result.tokens.length;
+      result.negativeOfTotal = Round(
+        result.negative.length / result.tokens.length
+      );
+      result.positiveOfTotal = Round(
+        result.positive.length / result.tokens.length
+      );
+      result.negativeCount = result.negative.length;
+      result.positiveCount = result.positive.length;
+      delete result.tokens;
       resolve(result);
 
       if (result === null) {

@@ -40,10 +40,15 @@ export class Language {
       wordpos
         .getPOS(text, result => {
           const length = +text.split(" ").length;
-          result.adjectivesTotal = Round(result.adjectives.length / length);
-          result.adverbsTotal = Round(result.adverbs.length / length);
-          result.nounsTotal = Round(result.nouns.length / length);
-          result.verbs = Round(result.verbs.length / length);
+          result.adjectivesOfTotal = Round(result.adjectives.length / length);
+          result.adverbsOfTotal = Round(result.adverbs.length / length);
+          result.nounsOfTotal = Round(result.nouns.length / length);
+          result.verbsofTotal = Round(result.verbs.length / length);
+
+          result.adjectivesCount = +result.adjectives.length;
+          result.adverbsCount = +result.adverbs.length;
+          result.nounsCount = +result.nouns.length;
+          result.verbsCount = +result.verbs.length;
 
           resolve(result);
         })
