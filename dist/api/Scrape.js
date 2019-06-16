@@ -47,10 +47,14 @@ class Scrape {
         $("styles").remove();
         const texts = [];
         $("html *").contents().map(function GetText() {
-          if (this.type === "text") {
+          // if (this.type === "text") {
+          //   texts.push($(this).text());
+          // }
+          try {
             texts.push($(this).text());
+          } catch (_unused) {//nothing
           }
-        }).last(resolve(texts));
+        }).last(resolve([...new Set(texts)]));
       }).catch(err => {
         console.error(err);
         reject(err);

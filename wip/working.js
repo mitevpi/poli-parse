@@ -1,5 +1,8 @@
 const PoliParse = require("../dist/index");
 
+// https://www.foxnews.com/
+// https://www.wsj.com/
+
 PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
   let newData = PoliParse.Parse.FilterLength(data, 2);
   newData = PoliParse.Parse.FilterSubject(newData, ["Donald", "Trump"]);
