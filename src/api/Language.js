@@ -30,12 +30,19 @@ export class Language {
   /**
    * Get part of speech tags for the input sentence.
    * @param {String} text The sentence to tag part of speech elements in.
-   * @returns {Object} Part of speech data.
+   * @returns {Promize<Object>} Part of speech data.
    */
   static ComputePOS(text) {
-    wordpos.getPOS(text, result => {
-      console.log(result);
-      return result;
+    return new Promise((resolve, reject) => {
+      wordpos
+        .getPOS(text, result => {
+          console.log(result);
+          resolve(result);
+        })
+        .catch(err => {
+          console.error(err);
+          reject(err);
+        });
     });
   }
 }

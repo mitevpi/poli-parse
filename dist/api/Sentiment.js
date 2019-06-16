@@ -38,17 +38,23 @@ class Sentiment {
   /**
    * Compute sentiment score from a sentence.
    * @param {String} text The sentence to analyze for sentiment.
-   * @returns {Object} Sentiment data.
+   * @returns {Promise<Object>} Sentiment data.
    */
   static Compute(text) {
-    const result = sentiment.analyze(text);
-    result.scoreRelative = result.score / 5;
-    result.parsed = result.words.length / result.tokens.length;
-    result.negativeParsed = result.negative.length / result.words.length || 0;
-    result.positiveParsed = result.positive.length / result.words.length || 0;
-    result.negativeTotal = result.negative.length / result.tokens.length;
-    result.positiveTotal = result.positive.length / result.tokens.length;
-    return result;
+    return new Promise((resolve, reject) => {
+      const result = sentiment.analyze(text);
+      result.scoreRelative = result.score / 5;
+      result.parsed = result.words.length / result.tokens.length;
+      result.negativeParsed = result.negative.length / result.words.length || 0;
+      result.positiveParsed = result.positive.length / result.words.length || 0;
+      result.negativeTotal = result.negative.length / result.tokens.length;
+      result.positiveTotal = result.positive.length / result.tokens.length;
+      resolve(result);
+
+      if (result === null) {
+        reject(result);
+      }
+    });
   }
 
 }

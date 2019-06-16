@@ -34,19 +34,20 @@ const wordpos = new WordPOS();
 
 class Language {
   /**
-   * Compute sentiment score from a sentence.
-   * @param {String} text The sentence to analyze for sentiment.
-   * @returns {Object} Sentiment data.
+   * Get part of speech tags for the input sentence.
+   * @param {String} text The sentence to tag part of speech elements in.
+   * @returns {Promize<Object>} Part of speech data.
    */
   static ComputePOS(text) {
-    const result = sentiment.analyze(text);
-    result.scoreRelative = result.score / 5;
-    result.parsed = result.words.length / result.tokens.length;
-    result.negativeParsed = result.negative.length / result.words.length || 0;
-    result.positiveParsed = result.positive.length / result.words.length || 0;
-    result.negativeTotal = result.negative.length / result.tokens.length;
-    result.positiveTotal = result.positive.length / result.tokens.length;
-    return result;
+    return new Promise((resolve, reject) => {
+      wordpos.getPOS(text, result => {
+        console.log(result);
+        resolve(result);
+      }).catch(err => {
+        console.error(err);
+        reject(err);
+      });
+    });
   }
 
 }
