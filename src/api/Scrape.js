@@ -29,7 +29,7 @@ export class Scrape {
   /**
    * Get all text from a URL's primary render HTML.
    * @param {String} url Web url to scrape for text.
-   * @returns {Promise<Array<Array>>} An array of arrays containing text of sentences scraped.
+   * @returns {Promise<Array>} Promise of an array containing the text of sentences scraped.
    */
   static AllText(url) {
     return new Promise((resolve, reject) => {
@@ -56,5 +56,16 @@ export class Scrape {
           reject(err);
         });
     });
+  }
+
+  /**
+   * Filter text from a URL's primary render HTML that isn't longer than X words (sentence).
+   * @param {Array} texts Array containing the text of sentences scraped.
+   * @param {Number} length The minimum word count to filter sentences against.
+   * @returns {Promise<Array>} The filtered array of texts, containing only sentences longer
+   * than X words.
+   */
+  static FilterSentence(texts, length) {
+    return texts.filter(sentence => sentence.split(" ").length > length);
   }
 }
