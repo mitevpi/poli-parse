@@ -50,7 +50,7 @@ class Scrape {
           if (this.type === "text") {
             texts.push($(this).text());
           }
-        }).then(resolve(texts));
+        }).last(resolve(texts));
       }).catch(err => {
         console.error(err);
         reject(err);

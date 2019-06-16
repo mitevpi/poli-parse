@@ -36,8 +36,23 @@ class Parse {
    * @returns {Promise<Array>} The filtered array of texts, containing only sentences longer
    * than X words.
    */
-  static FilterSentence(texts, length) {
+  static FilterLength(texts, length) {
     return texts.filter(sentence => sentence.split(" ").length > length);
+  }
+  /**
+   * Filter text from a URL's primary render HTML that mentions the subject keywords.
+   * @param {Array} texts Array containing the text of sentences scraped.
+   * @param {Array<String>} keywords Array of strings to search for in the texts.
+   * @returns {Array} The filtered array of texts, containing only sentences mentioning
+   * the keywords input by the user.
+   */
+
+
+  static FilterSubject(texts, keywords) {
+    const checker = value => keywords.some(element => value.includes(element));
+
+    console.log(texts.filter(checker));
+    return texts.filter(checker);
   }
 
 }

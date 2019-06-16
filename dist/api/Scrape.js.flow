@@ -40,7 +40,6 @@ export class Scrape {
           const $ = cheerio.load(response.data);
           $("script").remove();
           $("styles").remove();
-
           const texts = [];
           $("html *")
             .contents()
@@ -49,7 +48,7 @@ export class Scrape {
                 texts.push($(this).text());
               }
             })
-            .then(resolve(texts));
+            .last(resolve(texts));
         })
         .catch(err => {
           console.error(err);
