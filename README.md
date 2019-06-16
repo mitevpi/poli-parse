@@ -1,4 +1,4 @@
-# Poli-Parse
+# Poli Parse
 
 Political news scrape/parser library.
 
@@ -39,3 +39,37 @@ import { Parse } from "@nbbj/poli-parse"; // es6
 
 The collection below is just a sample of methods and may be out of date. For the most recent examples, please see the [samples](samples/) folder in the root directory of this repository.
 
+#### Basic
+
+Basic scrape/parse example.
+
+```js
+const PoliParse = require("../dist/index"); // import library
+
+// hit the homepage of wsj.com
+PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
+  // filter out text that isn't longer than two words (likely not a sentence)
+  const filtered = PoliParse.Parse.FilterLength(data, 2);
+
+  // find all texts which mention a specific subject
+  const subject = PoliParse.Parse.FilterSubject(filtered, [
+    "Martin",
+    "Feldstein"
+  ]);
+
+  // see what headlines were found regarding the subject
+  console.log(subject);
+});
+```
+
+## Commands
+
+The following commands are available during development.
+
+```sh
+npm test # run tests with Jest
+npm run coverage # run tests with coverage and open it on browser
+npm run lint # lint code
+npm run docs # generate docs
+npm run build # transpile code
+```

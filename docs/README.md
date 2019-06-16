@@ -17,7 +17,7 @@ Parasing the scraped text.
 
 ### FilterLength
 
-Filter text from a URL's primary render HTML that isn't longer than X words (sentence).
+Filter out text from a URL's primary render HTML that isn't longer than X words (sentence).
 
 #### Parameters
 
@@ -29,7 +29,7 @@ than X words.
 
 ### FilterSubject
 
-Filter text from a URL's primary render HTML that mentions the subject keywords.
+Filter text from a URL's primary render HTML that mentions any of the subject keywords.
 
 #### Parameters
 

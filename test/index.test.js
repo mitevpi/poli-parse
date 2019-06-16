@@ -1,5 +1,9 @@
-import { Scrape } from "../src";
+import { Scrape, Parse } from "../src";
 
-test("import Weather", () => {
+test("import Scrape", () => {
   expect.anything(Scrape);
+});
+
+test("import Parse", () => {
+  expect.anything(Parse);
 });

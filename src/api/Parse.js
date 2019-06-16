@@ -24,7 +24,7 @@ SOFTWARE.
 
 export class Parse {
   /**
-   * Filter text from a URL's primary render HTML that isn't longer than X words (sentence).
+   * Filter out text from a URL's primary render HTML that isn't longer than X words (sentence).
    * @param {Array} texts Array containing the text of sentences scraped.
    * @param {Number} length The minimum word count to filter sentences against.
    * @returns {Promise<Array>} The filtered array of texts, containing only sentences longer
@@ -35,7 +35,7 @@ export class Parse {
   }
 
   /**
-   * Filter text from a URL's primary render HTML that mentions the subject keywords.
+   * Filter text from a URL's primary render HTML that mentions any of the subject keywords.
    * @param {Array} texts Array containing the text of sentences scraped.
    * @param {Array<String>} keywords Array of strings to search for in the texts.
    * @returns {Array} The filtered array of texts, containing only sentences mentioning
