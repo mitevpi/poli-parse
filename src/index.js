@@ -4,6 +4,11 @@
  * Parsing the scraped front page text.
  * @property {Parse}
  */
+export { Language } from "./api/Language";
+/**
+ * Parsing the scraped front page text.
+ * @property {Parse}
+ */
 export { Parse } from "./api/Parse";
 /**
  * Scraping raw text data from news outlet

@@ -3,7 +3,12 @@ const PoliParse = require("../dist/index");
 PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
   let newData = PoliParse.Parse.FilterLength(data, 2);
   newData = PoliParse.Parse.FilterSubject(newData, ["Martin", "Feldstein"]);
-  console.log(newData);
+
+  newData.map(headline => {
+    const sentiment = PoliParse.Sentiment.Compute(headline);
+    const POS = console.log(sentiment);
+  });
+
   console.log(newData);
 });
 

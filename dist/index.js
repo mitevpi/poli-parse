@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "Language", {
+  enumerable: true,
+  get: function get() {
+    return _Language.Language;
+  }
+});
 Object.defineProperty(exports, "Parse", {
   enumerable: true,
   get: function get() {
@@ -21,6 +27,8 @@ Object.defineProperty(exports, "Sentiment", {
     return _Sentiment.Sentiment;
   }
 });
+
+var _Language = require("./api/Language");
 
 var _Parse = require("./api/Parse");
 

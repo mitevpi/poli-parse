@@ -1,3 +1,10 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Language = void 0;
+
 /*
 MIT License
 
@@ -21,26 +28,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+const WordPOS = require("wordpos");
 
-import SentimentModule from "sentiment";
+const wordpos = new WordPOS();
 
-const sentiment = new SentimentModule();
-
-export class Sentiment {
+class Language {
   /**
    * Compute sentiment score from a sentence.
    * @param {String} text The sentence to analyze for sentiment.
    * @returns {Object} Sentiment data.
    */
-  static Compute(text) {
+  static ComputePOS(text) {
     const result = sentiment.analyze(text);
     result.scoreRelative = result.score / 5;
     result.parsed = result.words.length / result.tokens.length;
     result.negativeParsed = result.negative.length / result.words.length || 0;
     result.positiveParsed = result.positive.length / result.words.length || 0;
-
     result.negativeTotal = result.negative.length / result.tokens.length;
     result.positiveTotal = result.positive.length / result.tokens.length;
     return result;
   }
+
 }
+
+exports.Language = Language;

@@ -32,7 +32,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-// var Sentiment = require("sentiment");
 const sentiment = new _sentiment.default();
 
 class Sentiment {
@@ -43,7 +42,12 @@ class Sentiment {
    */
   static Compute(text) {
     const result = sentiment.analyze(text);
-    console.log(result);
+    result.scoreRelative = result.score / 5;
+    result.parsed = result.words.length / result.tokens.length;
+    result.negativeParsed = result.negative.length / result.words.length || 0;
+    result.positiveParsed = result.positive.length / result.words.length || 0;
+    result.negativeTotal = result.negative.length / result.tokens.length;
+    result.positiveTotal = result.positive.length / result.tokens.length;
     return result;
   }
 

@@ -22,17 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import SentimentModule from "sentiment";
+const WordPOS = require("wordpos");
 
-const sentiment = new SentimentModule();
+const wordpos = new WordPOS();
 
-export class Sentiment {
+export class Language {
   /**
    * Compute sentiment score from a sentence.
    * @param {String} text The sentence to analyze for sentiment.
    * @returns {Object} Sentiment data.
    */
-  static Compute(text) {
+  static ComputePOS(text) {
     const result = sentiment.analyze(text);
     result.scoreRelative = result.score / 5;
     result.parsed = result.words.length / result.tokens.length;
