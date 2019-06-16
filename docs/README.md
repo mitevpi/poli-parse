@@ -2,13 +2,32 @@
 
 ### Table of Contents
 
--   [Scrape][1]
-    -   [AllText][2]
+-   [Parse][1]
+    -   [FilterSentence][2]
         -   [Parameters][3]
+-   [Scrape][4]
+    -   [AllText][5]
+        -   [Parameters][6]
+
+## Parse
+
+Parasing the scraped text.
+
+### FilterSentence
+
+Filter text from a URL's primary render HTML that isn't longer than X words (sentence).
+
+#### Parameters
+
+-   `texts` **[Array][7]** Array containing the text of sentences scraped.
+-   `length` **[Number][8]** The minimum word count to filter sentences against.
+
+Returns **[Promise][9]&lt;[Array][7]>** The filtered array of texts, containing only sentences longer
+than X words.
 
 ## Scrape
 
-Weather-related data for analysis.
+Scraping the raw data from news outlet front page HTML.
 
 ### AllText
 
@@ -16,18 +35,26 @@ Get all text from a URL's primary render HTML.
 
 #### Parameters
 
--   `url` **[String][4]** Web url to scrape for text.
+-   `url` **[String][10]** Web url to scrape for text.
 
-Returns **[Promise][5]&lt;[Array][6]&lt;[Array][6]>>** An array of arrays containing text of sentences scraped.
+Returns **[Promise][9]&lt;[Array][7]>** Promise of an array containing the text of sentences scraped.
 
-[1]: #scrape
+[1]: #parse
 
-[2]: #alltext
+[2]: #filtersentence
 
 [3]: #parameters
 
-[4]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[4]: #scrape
 
-[5]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[5]: #alltext
 
-[6]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[6]: #parameters-1
+
+[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[9]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

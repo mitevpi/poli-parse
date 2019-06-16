@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Scrape = void 0;
+exports.Parse = void 0;
 
 /*
 MIT License
@@ -28,36 +28,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-const cheerio = require("cheerio");
-
-const axios = require("axios");
-
-class Scrape {
+class Parse {
   /**
-   * Get all text from a URL's primary render HTML.
-   * @param {String} url Web url to scrape for text.
-   * @returns {Promise<Array>} Promise of an array containing the text of sentences scraped.
+   * Filter text from a URL's primary render HTML that isn't longer than X words (sentence).
+   * @param {Array} texts Array containing the text of sentences scraped.
+   * @param {Number} length The minimum word count to filter sentences against.
+   * @returns {Promise<Array>} The filtered array of texts, containing only sentences longer
+   * than X words.
    */
-  static AllText(url) {
-    return new Promise((resolve, reject) => {
-      axios.get(url).then(response => {
-        // Load the web page source code into a cheerio instance
-        const $ = cheerio.load(response.data);
-        $("script").remove();
-        $("styles").remove();
-        const texts = [];
-        $("html *").contents().map(function GetText() {
-          if (this.type === "text") {
-            texts.push($(this).text());
-          }
-        }).then(resolve(texts));
-      }).catch(err => {
-        console.error(err);
-        reject(err);
-      });
-    });
+  static FilterSentence(texts, length) {
+    return texts.filter(sentence => sentence.split(" ").length > length);
   }
 
 }
 
-exports.Scrape = Scrape;
+exports.Parse = Parse;
