@@ -2,17 +2,34 @@
 
 ### Table of Contents
 
--   [Parse][1]
-    -   [FilterLength][2]
+-   [Language][1]
+    -   [ComputePOS][2]
         -   [Parameters][3]
-    -   [FilterSubject][4]
-        -   [Parameters][5]
--   [Scrape][6]
-    -   [AllText][7]
+-   [Parse][4]
+    -   [FilterLength][5]
+        -   [Parameters][6]
+    -   [FilterSubject][7]
         -   [Parameters][8]
--   [Sentiment][9]
-    -   [Compute][10]
+-   [Scrape][9]
+    -   [AllText][10]
         -   [Parameters][11]
+-   [Sentiment][12]
+    -   [Compute][13]
+        -   [Parameters][14]
+
+## Language
+
+Parsing the scraped front page text.
+
+### ComputePOS
+
+Get part of speech tags for the input sentence.
+
+#### Parameters
+
+-   `text` **[String][15]** The sentence to tag part of speech elements in.
+
+Returns **Promize&lt;[Object][16]>** Part of speech data.
 
 ## Parse
 
@@ -24,10 +41,10 @@ Filter out text from a URL's primary render HTML that isn't longer than X words 
 
 #### Parameters
 
--   `texts` **[Array][12]** Array containing the text of sentences scraped.
--   `length` **[Number][13]** The minimum word count to filter sentences against.
+-   `texts` **[Array][17]** Array containing the text of sentences scraped.
+-   `length` **[Number][18]** The minimum word count to filter sentences against.
 
-Returns **[Promise][14]&lt;[Array][12]>** The filtered array of texts, containing only sentences longer
+Returns **[Promise][19]&lt;[Array][17]>** The filtered array of texts, containing only sentences longer
 than X words.
 
 ### FilterSubject
@@ -36,10 +53,10 @@ Filter text from a URL's primary render HTML that mentions any of the subject ke
 
 #### Parameters
 
--   `texts` **[Array][12]** Array containing the text of sentences scraped.
--   `keywords` **[Array][12]&lt;[String][15]>** Array of strings to search for in the texts.
+-   `texts` **[Array][17]** Array containing the text of sentences scraped.
+-   `keywords` **[Array][17]&lt;[String][15]>** Array of strings to search for in the texts.
 
-Returns **[Array][12]** The filtered array of texts, containing only sentences mentioning
+Returns **[Array][17]** The filtered array of texts, containing only sentences mentioning
 the keywords input by the user.
 
 ## Scrape
@@ -55,7 +72,7 @@ Get all text from a URL's primary render HTML.
 
 -   `url` **[String][15]** Web url to scrape for text.
 
-Returns **[Promise][14]&lt;[Array][12]>** Promise of an array containing the text of sentences scraped.
+Returns **[Promise][19]&lt;[Array][17]>** Promise of an array containing the text of sentences scraped.
 
 ## Sentiment
 
@@ -69,36 +86,42 @@ Compute sentiment score from a sentence.
 
 -   `text` **[String][15]** The sentence to analyze for sentiment.
 
-Returns **[Object][16]** Sentiment data.
+Returns **[Promise][19]&lt;[Object][16]>** Sentiment data.
 
-[1]: #parse
+[1]: #language
 
-[2]: #filterlength
+[2]: #computepos
 
 [3]: #parameters
 
-[4]: #filtersubject
+[4]: #parse
 
-[5]: #parameters-1
+[5]: #filterlength
 
-[6]: #scrape
+[6]: #parameters-1
 
-[7]: #alltext
+[7]: #filtersubject
 
 [8]: #parameters-2
 
-[9]: #sentiment
+[9]: #scrape
 
-[10]: #compute
+[10]: #alltext
 
 [11]: #parameters-3
 
-[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[12]: #sentiment
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[13]: #compute
 
-[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[14]: #parameters-4
 
 [15]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
 [16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+
+[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
