@@ -3,27 +3,41 @@
 ### Table of Contents
 
 -   [Parse][1]
-    -   [FilterSentence][2]
+    -   [FilterLength][2]
         -   [Parameters][3]
--   [Scrape][4]
-    -   [AllText][5]
-        -   [Parameters][6]
+    -   [FilterSubject][4]
+        -   [Parameters][5]
+-   [Scrape][6]
+    -   [AllText][7]
+        -   [Parameters][8]
 
 ## Parse
 
 Parasing the scraped text.
 
-### FilterSentence
+### FilterLength
 
 Filter text from a URL's primary render HTML that isn't longer than X words (sentence).
 
 #### Parameters
 
--   `texts` **[Array][7]** Array containing the text of sentences scraped.
--   `length` **[Number][8]** The minimum word count to filter sentences against.
+-   `texts` **[Array][9]** Array containing the text of sentences scraped.
+-   `length` **[Number][10]** The minimum word count to filter sentences against.
 
-Returns **[Promise][9]&lt;[Array][7]>** The filtered array of texts, containing only sentences longer
+Returns **[Promise][11]&lt;[Array][9]>** The filtered array of texts, containing only sentences longer
 than X words.
+
+### FilterSubject
+
+Filter text from a URL's primary render HTML that mentions the subject keywords.
+
+#### Parameters
+
+-   `texts` **[Array][9]** Array containing the text of sentences scraped.
+-   `keywords` **[Array][9]&lt;[String][12]>** Array of strings to search for in the texts.
+
+Returns **[Array][9]** The filtered array of texts, containing only sentences mentioning
+the keywords input by the user.
 
 ## Scrape
 
@@ -35,26 +49,30 @@ Get all text from a URL's primary render HTML.
 
 #### Parameters
 
--   `url` **[String][10]** Web url to scrape for text.
+-   `url` **[String][12]** Web url to scrape for text.
 
-Returns **[Promise][9]&lt;[Array][7]>** Promise of an array containing the text of sentences scraped.
+Returns **[Promise][11]&lt;[Array][9]>** Promise of an array containing the text of sentences scraped.
 
 [1]: #parse
 
-[2]: #filtersentence
+[2]: #filterlength
 
 [3]: #parameters
 
-[4]: #scrape
+[4]: #filtersubject
 
-[5]: #alltext
+[5]: #parameters-1
 
-[6]: #parameters-1
+[6]: #scrape
 
-[7]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[7]: #alltext
 
-[8]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[8]: #parameters-2
 
-[9]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[9]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[10]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String

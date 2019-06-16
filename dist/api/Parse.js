@@ -49,9 +49,8 @@ class Parse {
 
 
   static FilterSubject(texts, keywords) {
-    const checker = value => keywords.some(element => value.includes(element));
+    const checker = value => keywords.some(element => value.toLowerCase().includes(element.toLowerCase()));
 
-    console.log(texts.filter(checker));
     return texts.filter(checker);
   }
 

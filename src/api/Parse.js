@@ -42,8 +42,10 @@ export class Parse {
    * the keywords input by the user.
    */
   static FilterSubject(texts, keywords) {
-    const checker = value => keywords.some(element => value.includes(element));
-    console.log(texts.filter(checker));
+    const checker = value =>
+      keywords.some(element =>
+        value.toLowerCase().includes(element.toLowerCase())
+      );
     return texts.filter(checker);
   }
 }
