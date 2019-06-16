@@ -28,9 +28,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+const axios = require("axios");
+
 const cheerio = require("cheerio");
 
-const axios = require("axios");
+const he = require("he");
 
 class Scrape {
   /**
@@ -42,7 +44,9 @@ class Scrape {
     return new Promise((resolve, reject) => {
       axios.get(url).then(response => {
         // Load the web page source code into a cheerio instance
-        const $ = cheerio.load(response.data);
+        const $ = cheerio.load(response.data, {
+          decodeEntities: true
+        });
         $("script").remove();
         $("styles").remove();
         const texts = [];
@@ -51,8 +55,8 @@ class Scrape {
           //   texts.push($(this).text());
           // }
           try {
-            texts.push($(this).text());
-          } catch (_unused) {//nothing
+            texts.push(he.decode($(this).text()).replace(/\s+/g, " "));
+          } catch (_unused) {// nothing
           }
         }).last(resolve([...new Set(texts)]));
       }).catch(err => {

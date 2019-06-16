@@ -22,8 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-const cheerio = require("cheerio");
 const axios = require("axios");
+const cheerio = require("cheerio");
+const he = require("he");
 
 export class Scrape {
   /**
@@ -37,7 +38,7 @@ export class Scrape {
         .get(url)
         .then(response => {
           // Load the web page source code into a cheerio instance
-          const $ = cheerio.load(response.data);
+          const $ = cheerio.load(response.data, { decodeEntities: true });
           $("script").remove();
           $("styles").remove();
           const texts = [];
@@ -49,9 +50,9 @@ export class Scrape {
               // }
 
               try {
-                texts.push($(this).text());
+                texts.push(he.decode($(this).text()).replace(/\s+/g, " "));
               } catch {
-                //nothing
+                // nothing
               }
             })
             .last(resolve([...new Set(texts)]));
