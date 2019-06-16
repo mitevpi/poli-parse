@@ -39,9 +39,17 @@ class Language {
    * @returns {Promize<Object>} Part of speech data.
    */
   static ComputePOS(text) {
+    function Round(x) {
+      return +Number.parseFloat(x).toPrecision(4);
+    }
+
     return new Promise((resolve, reject) => {
       wordpos.getPOS(text, result => {
-        console.log(result);
+        const length = +text.split(" ").length;
+        result.adjectivesTotal = Round(result.adjectives.length / length);
+        result.adverbsTotal = Round(result.adverbs.length / length);
+        result.nounsTotal = Round(result.nouns.length / length);
+        result.verbs = Round(result.verbs.length / length);
         resolve(result);
       }).catch(err => {
         console.error(err);
