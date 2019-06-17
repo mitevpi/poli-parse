@@ -2,7 +2,7 @@
   "name": "poli-parse",
   "version": "1.0.0",
   "description": "Political news scraping/parsing library.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": {
     "name": "Petr Mitev",
     "email": "p.mitevpi@gmail.com",
