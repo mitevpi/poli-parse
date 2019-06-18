@@ -16,8 +16,10 @@ const PP = require("../dist/index");
 
 PP.Scrape.AllText("https://www.wsj.com/").then(data => {
   let newData = PP.Parse.FilterLength(data, 2);
+  newData = PP.Parse.SplitMonolithic(newData);
   newData = PP.Parse.FilterSubject(newData, ["Donald", "Trump"]);
-  PP.Parse.SplitMonolithic(newData);
+
+  console.log(newData);
 
   const results = newData.map(async headline => {
     const sentiment = await PP.Sentiment.Compute(headline);

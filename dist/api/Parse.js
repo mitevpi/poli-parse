@@ -33,23 +33,31 @@ class Parse {
    * Filter out text from a URL's primary render HTML that isn't longer than X words (sentence).
    * @param {Array} texts Array containing the text of sentences scraped.
    * @param {Number} length The minimum word count to filter sentences against.
-   * @returns {Promise<Array>} The filtered array of texts, containing only sentences longer
+   * @returns {Array} The filtered array of texts, containing only sentences longer
    * than X words.
    */
   static FilterLength(texts, length) {
     return texts.filter(sentence => sentence.split(" ").length > length);
   }
+  /**
+   * Split up monolithic text from a URL by instances of two capitalized words merged
+   * into one. eg. "MarketWatch"
+   * @param {Array} texts Array containing the text of sentences scraped.
+   * @param {Number} length The maximum length to consider a text montolithic.
+   * @returns {Array} The new array of texts, containing the split up texts.
+   */
+
 
   static SplitMonolithic(texts) {
-    const texts2 = texts
-      .filter(sentence => sentence.split(" ").length > 100)
-      .map(text => {
-        const split = text.split(/[A-Z]([a-zA-Z]\w+)[A-Z]\w+/g);
-        console.log(split);
-        return text;
+    const regex = /[A-Z][a-zA-Z]\w+(?=[A-Z])/g;
+    texts.filter(sentence => sentence.split(" ").length > 100).map(text => {
+      text.split(regex).map(splitSentence => {
+        if (splitSentence.split(" ").length > 2) {
+          texts.push(splitSentence);
+        }
       });
-    console.log(texts2);
-    return true;
+    });
+    return texts.filter(sentence => sentence.split(" ").length < 100);
   }
   /**
    * Filter text from a URL's primary render HTML that mentions any of the subject keywords.
@@ -59,14 +67,13 @@ class Parse {
    * the keywords input by the user.
    */
 
+
   static FilterSubject(texts, keywords) {
-    const checker = value =>
-      keywords.some(element =>
-        value.toLowerCase().includes(element.toLowerCase())
-      );
+    const checker = value => keywords.some(element => value.toLowerCase().includes(element.toLowerCase()));
 
     return texts.filter(checker);
   }
+
 }
 
 exports.Parse = Parse;
