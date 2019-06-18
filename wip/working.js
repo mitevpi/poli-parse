@@ -1,4 +1,4 @@
-const PoliParse = require("../dist/index");
+const PP = require("../dist/index");
 
 // https://www.foxnews.com/
 // https://www.wsj.com/
@@ -14,13 +14,14 @@ const PoliParse = require("../dist/index");
 // https://www.bloomberg.com/
 // https://www.cnn.com/
 
-PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
-  let newData = PoliParse.Parse.FilterLength(data, 2);
-  newData = PoliParse.Parse.FilterSubject(newData, ["Donald", "Trump"]);
+PP.Scrape.AllText("https://www.wsj.com/").then(data => {
+  let newData = PP.Parse.FilterLength(data, 2);
+  newData = PP.Parse.FilterSubject(newData, ["Donald", "Trump"]);
+  PP.Parse.SplitMonolithic(newData);
 
   const results = newData.map(async headline => {
-    const sentiment = await PoliParse.Sentiment.Compute(headline);
-    const pos = await PoliParse.Language.ComputePOS(headline);
+    const sentiment = await PP.Sentiment.Compute(headline);
+    const pos = await PP.Language.ComputePOS(headline);
     return {
       headline,
       sentiment,

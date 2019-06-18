@@ -34,6 +34,17 @@ export class Parse {
     return texts.filter(sentence => sentence.split(" ").length > length);
   }
 
+  static SplitMonolithic(texts) {
+    texts
+      .filter(sentence => sentence.split(" ").length > 100)
+      .map(text => {
+        const split = text.split(/[A-Z]([a-zA-Z]\w+)[A-Z]\w+/g);
+        console.log(split);
+        return text;
+      });
+    return true;
+  }
+
   /**
    * Filter text from a URL's primary render HTML that mentions any of the subject keywords.
    * @param {Array} texts Array containing the text of sentences scraped.

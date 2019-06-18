@@ -39,6 +39,18 @@ class Parse {
   static FilterLength(texts, length) {
     return texts.filter(sentence => sentence.split(" ").length > length);
   }
+
+  static SplitMonolithic(texts) {
+    const texts2 = texts
+      .filter(sentence => sentence.split(" ").length > 100)
+      .map(text => {
+        const split = text.split(/[A-Z]([a-zA-Z]\w+)[A-Z]\w+/g);
+        console.log(split);
+        return text;
+      });
+    console.log(texts2);
+    return true;
+  }
   /**
    * Filter text from a URL's primary render HTML that mentions any of the subject keywords.
    * @param {Array} texts Array containing the text of sentences scraped.
@@ -47,13 +59,14 @@ class Parse {
    * the keywords input by the user.
    */
 
-
   static FilterSubject(texts, keywords) {
-    const checker = value => keywords.some(element => value.toLowerCase().includes(element.toLowerCase()));
+    const checker = value =>
+      keywords.some(element =>
+        value.toLowerCase().includes(element.toLowerCase())
+      );
 
     return texts.filter(checker);
   }
-
 }
 
 exports.Parse = Parse;
