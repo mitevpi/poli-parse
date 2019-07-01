@@ -51,10 +51,13 @@ PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
   // filter out text that isn't longer than two words (likely not a sentence)
   const filtered = PoliParse.Parse.FilterLength(data, 2);
 
+  // split monolithic text from the html into more useful chunks
+  const split = PP.Parse.SplitMonolithic(filtered);
+
   // find all texts which mention a specific subject
-  const subject = PoliParse.Parse.FilterSubject(filtered, [
-    "Martin",
-    "Feldstein"
+  const subject = PoliParse.Parse.FilterSubject(split, [
+    "Elizabeth",
+    "Warren"
   ]);
 
   // see what headlines were found regarding the subject
@@ -71,6 +74,7 @@ const PoliParse = require("../dist/index"); // import library
 
 PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
   let newData = PoliParse.Parse.FilterLength(data, 2);
+  newData = PP.Parse.SplitMonolithic(newData);
   newData = PoliParse.Parse.FilterSubject(newData, ["Donald", "Trump"]);
 
   const results = newData.map(async headline => {
