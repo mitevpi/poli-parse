@@ -1,11 +1,12 @@
-const PoliParse = require("../dist/index");
+const PP = require("../dist/index");
 
-PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
-  const filtered = PoliParse.Parse.FilterLength(data, 2);
-  const subject = PoliParse.Parse.FilterSubject(filtered, [
-    "Martin",
-    "Feldstein"
+PP.Scrape.AllText("https://www.wsj.com/").then(data => {
+  data = PP.Parse.FilterLength(data, 3);
+  data = PP.Parse.SplitMonolithic(data);
+  data = PP.Parse.FilterSubject(data, [
+    "Donald",
+    "Trump"
   ]);
-  console.log(subject);
-  console.log(subject);
+  console.log(data);
+  console.log(data);
 });
