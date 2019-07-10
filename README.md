@@ -1,5 +1,11 @@
 # Poli Parse
 
+[![Generic badge](https://img.shields.io/badge/Docs-Web-Green.svg)](https://mitevpi.github.io/poli-parse/) [![Generic badge](https://img.shields.io/badge/Docs-MD-Green.svg)](docs/README.md) [![Generic badge](https://img.shields.io/badge/Samples-JS-Green.svg)](samples/) ![NPM](https://img.shields.io/npm/l/poli-parse.svg)
+
+[![npm](https://img.shields.io/npm/v/poli-parse.svg)](https://www.npmjs.com/package/poli-parse) [![npm bundle size](https://img.shields.io/bundlephobia/min/poli-parse.svg)](https://bundlephobia.com/result?/poli-parse) [![npm](https://img.shields.io/npm/dw/poli-parse.svg)](https://www.npmjs.com/package/poli-parse) [![npm2](https://img.shields.io/npm/dt/poli-parse.svg)](https://www.npmjs.com/package/poli-parse)
+
+[![GitHub issues](https://img.shields.io/github/issues/mitevpi/poli-parse.svg)](https://github.com/mitevpi/poli-parse/issues) ![David](https://img.shields.io/david/dev/mitevpi/poli-parse.svg) [![GitHub last commit](https://img.shields.io/github/last-commit/mitevpi/poli-parse.svg)](https://github.com/mitevpi/poli-parse/commits/master)
+
 Political news scraping & NLP parsing from web pages.
 
 ## Usage
