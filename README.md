@@ -1,10 +1,10 @@
 # Poli Parse
 
-Political news scrape/parser library.
+Political news scraping & NLP parsing from web pages.
 
 ## Usage
 
-To use this module, install locally using the command below, or clone this repository and import the .js files directly from source.
+To use this module, install from [npm](https://www.npmjs.com/package/poli-parse), install locally using the command below, or clone this repository and import the .js files directly from source.
 
 ```cmd
 npm i poli-parse
@@ -32,7 +32,7 @@ import * as PoliParse from from "poli-parse"; // from npm
 const Parse = require("./Parse");
 
 const { Parse } = require("poli-parse");
-import { Parse } from "@nbbj/poli-parse"; // es6
+import { Parse } from "poli-parse"; // es6
 ```
 
 ### Methods
