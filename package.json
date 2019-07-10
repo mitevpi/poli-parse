@@ -1,7 +1,7 @@
 {
   "name": "poli-parse",
   "version": "1.1.0",
-  "description": "Political news scraping/parsing library.",
+  "description": "Political news scraping/parsing from web pages.",
   "main": "dist/index.js",
   "author": {
     "name": "Petr Mitev",
@@ -13,7 +13,8 @@
     "sentiment",
     "news",
     "bias",
-    "data"
+    "data",
+    "headline"
   ],
   "files": [
     "dist",
@@ -70,26 +71,26 @@
     "wordpos": "1.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/cli": "7.5.0",
+    "@babel/core": "7.5.4",
+    "@babel/plugin-proposal-class-properties": "7.5.0",
+    "@babel/preset-env": "7.5.4",
     "@babel/preset-flow": "^7.0.0",
     "babel-eslint": "10.0.2",
     "babel-jest": "^24.8.0",
-    "documentation": "^11.0.1",
+    "documentation": "12.0.1",
     "eslint": "6.0.1",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-airbnb-base": "13.2.0",
     "eslint-config-prettier": "6.0.0",
     "eslint-plugin-flowtype": "3.11.1",
     "eslint-plugin-flowtype-errors": "^4.1.0",
     "eslint-plugin-import": "2.18.0",
     "eslint-plugin-prettier": "^3.1.0",
     "flow-bin": "0.102.0",
-    "flow-copy-source": "^2.0.6",
+    "flow-copy-source": "2.0.7",
     "husky": "3.0.0",
     "jest": "^24.8.0",
-    "lint-staged": "9.0.0",
+    "lint-staged": "9.2.0",
     "opn-cli": "^5.0.0",
     "prettier": "^1.18.2",
     "rimraf": "^2.6.3",

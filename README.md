@@ -44,18 +44,18 @@ The collection below is just a sample of methods and may be out of date. For the
 Basic scrape/parse example.
 
 ```js
-const PoliParse = require("../dist/index"); // import library
+const PP = require("../dist/index"); // import library
 
 // hit the homepage of wsj.com
-PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
+PP.Scrape.AllText("https://www.wsj.com/").then(data => {
   // filter out text that isn't longer than two words (likely not a sentence)
-  const filtered = PoliParse.Parse.FilterLength(data, 2);
+  const filtered = PP.Parse.FilterLength(data, 2);
 
   // split monolithic text from the html into more useful chunks
   const split = PP.Parse.SplitMonolithic(filtered);
 
   // find all texts which mention a specific subject
-  const subject = PoliParse.Parse.FilterSubject(split, [
+  const subject = PP.Parse.FilterSubject(split, [
     "Elizabeth",
     "Warren"
   ]);
@@ -70,16 +70,16 @@ PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
 More advanced scrape/parse example, with analysis logic added.
 
 ```js
-const PoliParse = require("../dist/index"); // import library
+const PP = require("../dist/index"); // import library
 
-PoliParse.Scrape.AllText("https://www.wsj.com/").then(data => {
-  let newData = PoliParse.Parse.FilterLength(data, 2);
+PP.Scrape.AllText("https://www.wsj.com/").then(data => {
+  let newData = PP.Parse.FilterLength(data, 2);
   newData = PP.Parse.SplitMonolithic(newData);
-  newData = PoliParse.Parse.FilterSubject(newData, ["Donald", "Trump"]);
+  newData = PP.Parse.FilterSubject(newData, ["Donald", "Trump"]);
 
   const results = newData.map(async headline => {
-    const sentiment = await PoliParse.Sentiment.Compute(headline);
-    const pos = await PoliParse.Language.ComputePOS(headline);
+    const sentiment = await PP.Sentiment.Compute(headline);
+    const pos = await PP.Language.ComputePOS(headline);
     return {
       headline,
       sentiment,
