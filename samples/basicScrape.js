@@ -8,4 +8,6 @@ PP.Scrape.AllText("https://www.wsj.com/").then(data => {
     "Trump"
   ]);
   console.log(data);
+  console.log(data);
+
 });
