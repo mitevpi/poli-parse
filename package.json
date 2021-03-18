@@ -47,9 +47,9 @@
     "postdocs": "",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "babel src -d dist && npm run docs",
+    "build": "babel src -d dist",
     "preversion": "npm run lint && npm run build",
-    "version": "standard-changelog && git add CHANGELOG.md",
+    "version": "npm run docs && standard-changelog && git add CHANGELOG.md",
     "postpublish": "git push origin master --follow-tags"
   },
   "husky": {

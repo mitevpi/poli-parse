@@ -27,6 +27,12 @@ Object.defineProperty(exports, "Sentiment", {
     return _Sentiment.Sentiment;
   }
 });
+Object.defineProperty(exports, "Tag", {
+  enumerable: true,
+  get: function get() {
+    return _Tag.Tag;
+  }
+});
 
 var _Language = require("./api/Language");
 
@@ -35,3 +41,5 @@ var _Parse = require("./api/Parse");
 var _Scrape = require("./api/Scrape");
 
 var _Sentiment = require("./api/Sentiment");
+
+var _Tag = require("./api/Tag");

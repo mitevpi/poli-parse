@@ -1,5 +1,3 @@
-// @flow
-
 /**
  * Parsing the scraped front page text.
  * @property {Parse}
@@ -21,3 +19,8 @@ export { Scrape } from "./api/Scrape";
  * @property {Sentiment}
  */
 export { Sentiment } from "./api/Sentiment";
+/**
+ * Get topic/tag data from text.
+ * @property {Tag}
+ */
+export { Tag } from "./api/Tag";

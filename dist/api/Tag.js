@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Scrape = void 0;
+exports.Tag = void 0;
 
 /*
 MIT License
@@ -28,43 +28,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-const axios = require("axios");
+class Tag {
+  static CountWords(str) {
+    const wordCounts = {};
+    const words = str.toLowerCase().split(/\b/);
+    words.map(word => {
+      if (word in wordCounts) {
+        wordCounts[word].count++;
+      } else {
+        wordCounts[word] = {
+          count: 1,
+          word
+        };
+      }
+    }); // TODO: FIX garbage code
 
-const cheerio = require("cheerio");
-
-const he = require("he");
-
-class Scrape {
-  /**
-   * Get all text from a URL's primary render HTML.
-   * @param {String} url Web url to scrape for text.
-   * @returns {Promise<Array>} Promise of an array containing the text of sentences scraped.
-   */
-  static AllText(url) {
-    return new Promise((resolve, reject) => {
-      axios.get(url).then(response => {
-        // Load the web page source code into a cheerio instance
-        const $ = cheerio.load(response.data, {
-          decodeEntities: true
-        }); // remove css and js content
-
-        $("script").remove();
-        $("styles").remove();
-        const texts = [];
-        $("html *").contents().map(function GetText() {
-          try {
-            texts.push(he.decode($(this).text()).replace(/\s+/g, " "));
-          } catch (_unused) {
-            console.error("Text not decoded");
-          }
-        }).last(resolve([...new Set(texts)]));
-      }).catch(err => {
-        console.error(err);
-        reject(err);
-      });
+    const objArray = [];
+    Object.keys(wordCounts).forEach(key => objArray.push({
+      word: key,
+      count: wordCounts[key].count
+    }));
+    objArray.sort((a, b) => {
+      return b.count - a.count;
     });
+    return objArray;
   }
 
 }
 
-exports.Scrape = Scrape;
+exports.Tag = Tag;

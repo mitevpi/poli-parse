@@ -151,6 +151,16 @@
                 
                 </li>
               
+                
+                <li><a
+                  href='#tag'
+                  class="">
+                  Tag
+                  
+                </a>
+                
+                </li>
+              
             </ul>
           </div>
           <div class='mt1 h6 quiet'>
@@ -415,7 +425,7 @@ than X words.
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>SplitMonolithic(texts, length)</span>
+            <span class='code strong strong truncate'>SplitMonolithic(texts)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -426,7 +436,7 @@ than X words.
   <p>Split up monolithic text from a URL by instances of two capitalized words merged
 into one. eg. "MarketWatch"</p>
 
-    <div class='pre p1 fill-light mt0'>SplitMonolithic(texts: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>, length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
+    <div class='pre p1 fill-light mt0'>SplitMonolithic(texts: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></div>
   
   
 
@@ -445,15 +455,7 @@ into one. eg. "MarketWatch"</p>
           <div>
             <span class='code bold'>texts</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>)</code>
 	    Array containing the text of sentences scraped.
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>length</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>)</code>
-	    The maximum length to consider a text montolithic.
+// * @param {Number} length The maximum length to consider a text monolithic.
 
           </div>
           
@@ -829,6 +831,56 @@ front page HTML (headlines, major stories).</p>
     </div>
   
 </div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='tag'>
+      Tag
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Get topic/tag data from text.</p>
+
+    <div class='pre p1 fill-light mt0'>Tag</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 

@@ -3,6 +3,9 @@
 wip/
 /wip
 wip
+dist/
+dist
+/dist
 
 # dependencies
 .vscode

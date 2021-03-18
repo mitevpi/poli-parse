@@ -18,6 +18,7 @@
 -   [Sentiment][14]
     -   [Compute][15]
         -   [Parameters][16]
+-   [Tag][17]
 
 ## Language
 
@@ -29,9 +30,9 @@ Get part of speech tags for the input sentence.
 
 #### Parameters
 
--   `text` **[String][17]** The sentence to tag part of speech elements in.
+-   `text` **[String][18]** The sentence to tag part of speech elements in.
 
-Returns **Promize&lt;[Object][18]>** Part of speech data.
+Returns **Promize&lt;[Object][19]>** Part of speech data.
 
 ## Parse
 
@@ -43,10 +44,10 @@ Filter out text from a URL's primary render HTML that isn't longer than X words 
 
 #### Parameters
 
--   `texts` **[Array][19]** Array containing the text of sentences scraped.
--   `length` **[Number][20]** The minimum word count to filter sentences against.
+-   `texts` **[Array][20]** Array containing the text of sentences scraped.
+-   `length` **[Number][21]** The minimum word count to filter sentences against.
 
-Returns **[Array][19]** The filtered array of texts, containing only sentences longer
+Returns **[Array][20]** The filtered array of texts, containing only sentences longer
 than X words.
 
 ### SplitMonolithic
@@ -56,10 +57,10 @@ into one. eg. "MarketWatch"
 
 #### Parameters
 
--   `texts` **[Array][19]** Array containing the text of sentences scraped.
--   `length` **[Number][20]** The maximum length to consider a text montolithic.
+-   `texts` **[Array][20]** Array containing the text of sentences scraped.
+    // \* @param {Number} length The maximum length to consider a text monolithic.
 
-Returns **[Array][19]** The new array of texts, containing the split up texts.
+Returns **[Array][20]** The new array of texts, containing the split up texts.
 
 ### FilterSubject
 
@@ -67,10 +68,10 @@ Filter text from a URL's primary render HTML that mentions any of the subject ke
 
 #### Parameters
 
--   `texts` **[Array][19]** Array containing the text of sentences scraped.
--   `keywords` **[Array][19]&lt;[String][17]>** Array of strings to search for in the texts.
+-   `texts` **[Array][20]** Array containing the text of sentences scraped.
+-   `keywords` **[Array][20]&lt;[String][18]>** Array of strings to search for in the texts.
 
-Returns **[Array][19]** The filtered array of texts, containing only sentences mentioning
+Returns **[Array][20]** The filtered array of texts, containing only sentences mentioning
 the keywords input by the user.
 
 ## Scrape
@@ -84,9 +85,9 @@ Get all text from a URL's primary render HTML.
 
 #### Parameters
 
--   `url` **[String][17]** Web url to scrape for text.
+-   `url` **[String][18]** Web url to scrape for text.
 
-Returns **[Promise][21]&lt;[Array][19]>** Promise of an array containing the text of sentences scraped.
+Returns **[Promise][22]&lt;[Array][20]>** Promise of an array containing the text of sentences scraped.
 
 ## Sentiment
 
@@ -98,9 +99,13 @@ Compute sentiment score from a sentence.
 
 #### Parameters
 
--   `text` **[String][17]** The sentence to analyze for sentiment.
+-   `text` **[String][18]** The sentence to analyze for sentiment.
 
-Returns **[Promise][21]&lt;[Object][18]>** Sentiment data.
+Returns **[Promise][22]&lt;[Object][19]>** Sentiment data.
+
+## Tag
+
+Get topic/tag data from text.
 
 [1]: #language
 
@@ -134,12 +139,14 @@ Returns **[Promise][21]&lt;[Object][18]>** Sentiment data.
 
 [16]: #parameters-5
 
-[17]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
+[17]: #tag
 
-[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[18]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 
-[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[19]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+[20]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[21]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
+[21]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number
+
+[22]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise
