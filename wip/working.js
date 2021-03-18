@@ -34,3 +34,9 @@ PP.Scrape.AllText("https://www.wsj.com/").then(data => {
     console.log(completed);
   });
 });
+
+// async function TestMe(){
+//   const data = await PP.Scrape.AllText("https://www.wsj.com/");
+//   console.log(data);
+// }
+// TestMe();

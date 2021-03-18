@@ -38,7 +38,7 @@ export class Parse {
    * Split up monolithic text from a URL by instances of two capitalized words merged
    * into one. eg. "MarketWatch"
    * @param {Array} texts Array containing the text of sentences scraped.
-   * @param {Number} length The maximum length to consider a text montolithic.
+   // * @param {Number} length The maximum length to consider a text monolithic.
    * @returns {Array} The new array of texts, containing the split up texts.
    */
   static SplitMonolithic(texts) {

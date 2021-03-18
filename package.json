@@ -35,7 +35,8 @@
   },
   "homepage": "https://github.com/mitevpi/poli-parse#readme",
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "testEnvironment": "node"
   },
   "scripts": {
     "test": "jest",

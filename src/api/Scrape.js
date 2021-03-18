@@ -39,41 +39,21 @@ export class Scrape {
         .then((response) => {
           // Load the web page source code into a cheerio instance
           const $ = cheerio.load(response.data, { decodeEntities: true });
+
+          // remove css and js content
           $("script").remove();
           $("styles").remove();
           const texts = [];
           $("html *")
             .contents()
             .map(function GetText() {
-              // if (this.type === "text") {
-              //   texts.push($(this).text());
-              // }
-
               try {
                 texts.push(he.decode($(this).text()).replace(/\s+/g, " "));
               } catch {
-                // nothing
+                console.error("Text not decoded");
               }
             })
             .last(resolve([...new Set(texts)]));
-        })
-        .catch((err) => {
-          console.error(err);
-          reject(err);
-        });
-    });
-  }
-
-  static AllText2(url) {
-    return new Promise((resolve, reject) => {
-      axios
-        .get(url)
-        .then((response) => {
-          const regex = />(\w+(.*))</g;
-          const found = response.data.match(regex);
-          console.log(found);
-
-          resolve(response);
         })
         .catch((err) => {
           console.error(err);
