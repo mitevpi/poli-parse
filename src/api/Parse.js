@@ -31,7 +31,7 @@ export class Parse {
    * than X words.
    */
   static FilterLength(texts, length) {
-    return texts.filter(sentence => sentence.split(" ").length > length);
+    return texts.filter((sentence) => sentence.split(" ").length > length);
   }
 
   /**
@@ -45,15 +45,15 @@ export class Parse {
     const regex = /[A-Z][a-zA-Z]\w+(?=[A-Z])/g;
 
     texts
-      .filter(sentence => sentence.split(" ").length > 100)
-      .map(text => {
-        text.split(regex).map(splitSentence => {
+      .filter((sentence) => sentence.split(" ").length > 100)
+      .map((text) => {
+        text.split(regex).map((splitSentence) => {
           if (splitSentence.split(" ").length > 2) {
             texts.push(splitSentence);
           }
         });
       });
-    return texts.filter(sentence => sentence.split(" ").length < 100);
+    return texts.filter((sentence) => sentence.split(" ").length < 100);
   }
 
   /**
@@ -64,8 +64,8 @@ export class Parse {
    * the keywords input by the user.
    */
   static FilterSubject(texts, keywords) {
-    const checker = value =>
-      keywords.some(element =>
+    const checker = (value) =>
+      keywords.some((element) =>
         value.toLowerCase().includes(element.toLowerCase())
       );
     return texts.filter(checker);

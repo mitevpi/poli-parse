@@ -36,7 +36,7 @@ export class Scrape {
     return new Promise((resolve, reject) => {
       axios
         .get(url)
-        .then(response => {
+        .then((response) => {
           // Load the web page source code into a cheerio instance
           const $ = cheerio.load(response.data, { decodeEntities: true });
           $("script").remove();
@@ -57,7 +57,7 @@ export class Scrape {
             })
             .last(resolve([...new Set(texts)]));
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           reject(err);
         });
@@ -68,14 +68,14 @@ export class Scrape {
     return new Promise((resolve, reject) => {
       axios
         .get(url)
-        .then(response => {
+        .then((response) => {
           const regex = />(\w+(.*))</g;
           const found = response.data.match(regex);
           console.log(found);
 
           resolve(response);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           reject(err);
         });

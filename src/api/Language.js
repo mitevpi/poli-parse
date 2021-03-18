@@ -38,7 +38,7 @@ export class Language {
     }
     return new Promise((resolve, reject) => {
       wordpos
-        .getPOS(text, result => {
+        .getPOS(text, (result) => {
           const length = +text.split(" ").length;
           result.adjectivesOfTotal = Round(result.adjectives.length / length);
           result.adverbsOfTotal = Round(result.adverbs.length / length);
@@ -52,7 +52,7 @@ export class Language {
 
           resolve(result);
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           reject(err);
         });
