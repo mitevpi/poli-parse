@@ -14,7 +14,7 @@ const PP = require("../dist/index");
 // https://www.bloomberg.com/
 // https://www.cnn.com/
 
-PP.Scrape.AllText("https://www.nytimes.com").then(data => {
+PP.Scrape.AllText("https://www.wsj.com/").then(data => {
   let newData = PP.Parse.FilterLength(data, 2);
   newData = PP.Parse.SplitMonolithic(newData);
   newData = PP.Parse.FilterSubject(newData, ["Donald", "Trump"]);
