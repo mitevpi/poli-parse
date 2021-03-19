@@ -23,15 +23,23 @@ SOFTWARE.
 */
 
 export class Tag {
+  /**
+   * Count the occurrences of words in a string.
+   * @param str
+   * @returns {[Object]} An array of objects containing word and count data.
+   */
   static CountWords(str) {
     const wordCounts = {};
     const words = str.toLowerCase().split(/\b/);
 
+    // iterate over words and build dictionary of counts
     words.map((word) => {
-      if (word in wordCounts) {
-        wordCounts[word].count++;
-      } else {
-        wordCounts[word] = { count: 1, word };
+      if (this.IsWordWorthChecking(word)) {
+        if (word in wordCounts) {
+          wordCounts[word].count++;
+        } else {
+          wordCounts[word] = { count: 1, word };
+        }
       }
     });
 
@@ -44,9 +52,27 @@ export class Tag {
       })
     );
 
+    // sort the words in descending order
     objArray.sort((a, b) => {
       return b.count - a.count;
     });
     return objArray;
+  }
+
+  /**
+   * Determine if a word is worth counting.
+   * @param word The word to test for relevance.
+   * @returns {boolean} Whether or not this word should be counted.
+   */
+  static IsWordWorthChecking(word) {
+    const skipWords = ["the", "you", "they", "your", "and", "with"];
+    let realWord = false;
+    const letters = word.match(/[a-z]/g);
+
+    // if letters are not more than half the string, skip it
+    if (letters != null) {
+      realWord = letters.length / word.length > 0.5;
+    }
+    return word.length > 2 && !skipWords.includes(word) && realWord;
   }
 }
